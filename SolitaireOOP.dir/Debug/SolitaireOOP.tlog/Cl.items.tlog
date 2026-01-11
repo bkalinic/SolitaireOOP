@@ -1,0 +1,16 @@
+C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\mocs_compilation_Debug.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\mocs_compilation_Debug.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\main.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\main.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\card.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\card.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\deck.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\deck.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\pile.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\pile.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\tablepile.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\tablepile.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\foundationpile.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\foundationpile.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\stockpile.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\stockpile.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\wastepile.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\wastepile.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\command.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\command.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\gameengine.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\gameengine.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\MainWindow.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\MainWindow.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\CardItem.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\CardItem.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\PileItem.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\PileItem.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\GameManager.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\GameManager.obj
+C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\3YJK5W5UP7_Debug\qrc_cards.cpp;C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP.dir\Debug\SolitaireOOP_autogen\3YJK5W5UP7_Debug\qrc_cards.cpp.obj
