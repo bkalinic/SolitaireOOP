@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\deck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\pile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\tablepile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\foundationpile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\stockpile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\wastepile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\cpp\gameengine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\CardItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\PileItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\gui\GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\3YJK5W5UP7_Debug\qrc_cards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\3YJK5W5UP7_Release\qrc_cards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\3YJK5W5UP7_MinSizeRel\qrc_cards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\SolitaireOOP_autogen\3YJK5W5UP7_RelWithDebInfo\qrc_cards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\guiHeader\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\guiHeader\CardItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\guiHeader\PileItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\BARTUL\source\repos\SolitaireOOP\src\guiHeader\GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\BARTUL\source\repos\SolitaireOOP\build\CMakeFiles\07a72d0f0c7023ba388b090bb1bcd7c2\qrc_cards.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\BARTUL\source\repos\SolitaireOOP\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\BARTUL\source\repos\SolitaireOOP\resources\cards.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{99394E26-C8AB-3240-B96B-D02E33A70D43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B52A9120-4E96-32A4-AF7C-0C987C2E0285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D40E967F-DEE2-3BAA-A09D-6611FC4FDD02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
