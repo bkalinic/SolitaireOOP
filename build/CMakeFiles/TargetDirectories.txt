@@ -1,3 +1,0 @@
-C:/Users/BARTUL/source/repos/SolitaireOOP/build/CMakeFiles/SolitaireOOP.dir
-C:/Users/BARTUL/source/repos/SolitaireOOP/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/BARTUL/source/repos/SolitaireOOP/build/CMakeFiles/ZERO_CHECK.dir
