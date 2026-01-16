@@ -2,21 +2,22 @@
 #define DECK_H
 
 #include "Card.h"
-#include <vector>
+#include "PileVirt.h"
 #include <random>
+#include <algorithm>
+#include <stdexcept>
 
-class Deck{
+class Deck : public Pile{
 private:
-    vector<cardPtr> cards;
+    vector<cardPtr> deckVct;
 public:
     Deck();
     ~Deck();
     void createDeck();
-    void shuffle();
-    bool isEmpty();
+    void shuffleDeck();
     size_t remainingCards const();
     cardPtr drawCard();
-
+    inline Solitaire::PileType getPileT(){return Pile::pileT}
 };
 
 #endif // DECK_H

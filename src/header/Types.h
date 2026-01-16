@@ -5,7 +5,7 @@
 namespace Solitaire{
     enum class Suit{H,K,P,T};
     enum class Rank{1,2,3,4,5,6,7,8,9,10,11,12,13};
-    enum class PileType{T,F,W,S};
+    enum class PileType{T,F,W,D};
     inline std::string stringSuit(Suit s){
         switch(s){
         case(Suit::H):return "Herc";

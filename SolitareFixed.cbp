@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SolitareFixed" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/SolitareFixed" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="main.cpp" />
+		<Unit filename="src/cpp/Card.cpp" />
+		<Unit filename="src/cpp/Deck.cpp" />
+		<Unit filename="src/cpp/FoundationPile.cpp" />
+		<Unit filename="src/cpp/PileVirt.cpp" />
+		<Unit filename="src/cpp/TablePile.cpp" />
+		<Unit filename="src/cpp/WastePile.cpp" />
+		<Unit filename="src/header/Card.h" />
+		<Unit filename="src/header/Deck.h" />
+		<Unit filename="src/header/FoundationPile.h" />
+		<Unit filename="src/header/PileVirt.h" />
+		<Unit filename="src/header/TablePile.h" />
+		<Unit filename="src/header/Types.h" />
+		<Unit filename="src/header/WastePile.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
