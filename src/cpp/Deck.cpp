@@ -1,25 +1,41 @@
 #include "../header/Deck.h"
+#include "../header/Card.h"
+#include "../header/Types.h"
+#include <iostream>
+#include <algorithm>
 
-Deck::Deck()
-    :Pile(D){}
-
-Deck::~Deck(){}
-
-void CreateDeck(){}
-
-void ShuffleDeck(){
-    auto rng = std::default_random_engine{};
-    std::shuffle(std::begin(this),std::end(this),rng);
+Deck::Deck() {
+    createDeck();
 }
 
-size_t remainingCards() const{
+Deck::~Deck() {}
+
+void Deck::createDeck() {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 13; j++) {
+            cardPtr tmp = std::make_shared<Card>(i, j, false);
+            deckVct.push_back(tmp);
+        }
+    }
+}
+
+void Deck::shuffleDeck(){
+    auto rng = std::default_random_engine{};
+    std::shuffle(deckVct.begin(), deckVct.end(), rng);
+}
+
+size_t Deck::remainingCards() const {
     return deckVct.size();
 }
 
-/*cardPtr drawCard(*WASTEPILE DETEKTOR NEKAKAV*){
-    if(!this.empty()){
-        WASTEPILE.push_back(this.back());
-        this.pop_back();
+cardPtr Deck::drawCard() {
+    cardPtr returning = deckVct.back();
+    deckVct.pop_back();
+    return returning;
+}
+
+void Deck::printDeck() const {
+    for (int i = 0; i < 52; i++) {
+        std::cout << deckVct[i] << std::endl;
     }
 }
-*/

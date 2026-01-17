@@ -6,18 +6,21 @@
 #include <random>
 #include <algorithm>
 #include <stdexcept>
+#include <vector>
 
-class Deck : public Pile{
+class Deck : public Pile {
 private:
-    vector<cardPtr> deckVct;
+    Solitaire::PileType tType = Solitaire::PileType::W;
+    std::vector<cardPtr> deckVct;
 public:
     Deck();
     ~Deck();
     void createDeck();
     void shuffleDeck();
-    size_t remainingCards const();
+    size_t remainingCards() const;
     cardPtr drawCard();
-    inline Solitaire::PileType getPileT(){return Pile::pileT}
+    void printDeck() const;
+    Solitaire::PileType getPileT() { return tType; }
 };
 
 #endif // DECK_H

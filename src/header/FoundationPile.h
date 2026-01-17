@@ -1,14 +1,19 @@
 #ifndef FOUNDATIONPILE_H
 #define FOUNDATIONPILE_H
-#include "PileVirt.h"
 
-class FoundationPile : public Pile{
+#include "PileVirt.h"
+#include "Card.h"
+#include <vector>
+
+class FoundationPile : public Pile {
 private:
+    Solitaire::PileType tType = Solitaire::PileType::F;
     Solitaire::Suit fPileSuit;
-    vector<cardPtr> fPileVct;
+    std::vector<cardPtr> fPileVct;
 public:
     FoundationPile(Solitaire::Suit fPileSuit);
     ~FoundationPile();
-    inline Solitaire::PileType getPileT(){return Pile::pileT}
+    Solitaire::PileType getPileT() { return tType; }
+    std::vector<cardPtr> getVct();
 };
 #endif // FOUNDATIONPILE_H

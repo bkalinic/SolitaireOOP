@@ -1,14 +1,15 @@
 #ifndef PILEVIRT_H
 #define PILEVIRT_H
+
 #include "Types.h"
-#include "Card.h"
 #include <vector>
-class Pile{
+
+class Pile {
 private:
     Solitaire::PileType pileT;
 public:
-    Pile(Solitaire::PileType pT);
+    Pile();
     ~Pile();
-    virtual inline Solitaire::PileType getPileT = 0;
+    virtual Solitaire::PileType getPileT() = 0;
 };
 #endif // PILEVIRT_H
