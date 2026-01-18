@@ -1,7 +1,7 @@
 ﻿#include "../header/Card.h"
 #include "../header/Types.h"
 
-Card::Card(Solitaire::Suit s, Solitaire::Rank r, bool fU)
+Card::Card(const Solitaire::Suit s, const Solitaire::Rank r, bool fU)
     :cardSuit(s), cardRank(r), faceUp(fU) {}
 
 Card::~Card() {}

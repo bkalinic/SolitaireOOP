@@ -3,6 +3,7 @@
 #include "../header/Types.h"
 #include <iostream>
 #include <algorithm>
+#include <memory>
 
 Deck::Deck() {
     createDeck();
@@ -10,10 +11,14 @@ Deck::Deck() {
 
 Deck::~Deck() {}
 
+std::vector<cardPtr> Deck::getDeckVct() {
+    return deckVct;
+}
+
 void Deck::createDeck() {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 13; j++) {
-            cardPtr tmp = std::make_shared<Card>(i, j, false);
+            cardPtr tmp = std::make_shared<Card>(Solitaire::Suit(i), Solitaire::Rank(j), false);
             deckVct.push_back(tmp);
         }
     }

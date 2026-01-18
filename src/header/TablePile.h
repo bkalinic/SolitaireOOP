@@ -13,6 +13,9 @@ private:
 public:
     TablePile(Deck& deck, int n);
     ~TablePile();
+
+    std::vector<cardPtr> getPileVct();
+
     void generatePile(Deck& deck, int n);
     Solitaire::PileType getPileT() override { return tType; }
 };

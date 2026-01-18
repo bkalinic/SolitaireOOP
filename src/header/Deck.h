@@ -15,6 +15,9 @@ private:
 public:
     Deck();
     ~Deck();
+
+    std::vector<cardPtr> getDeckVct();
+
     void createDeck();
     void shuffleDeck();
     size_t remainingCards() const;

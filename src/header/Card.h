@@ -12,7 +12,7 @@ private:
     Solitaire::Rank cardRank;
     bool faceUp = false;
 public:
-    Card(Solitaire::Suit s, Solitaire::Rank r, bool fU);
+    Card(const Solitaire::Suit s, const Solitaire::Rank r, bool fU);
     ~Card();
     Solitaire::Suit getSuit() const;
     Solitaire::Rank getRank() const;
