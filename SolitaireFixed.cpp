@@ -11,6 +11,7 @@
 #include "src/header/FoundationPile.h"
 #include "src/header/TablePile.h"
 #include "src/header/Types.h"
+#include "src/header/WastePile.h"
 #include <vector>
 #include <string>
 
@@ -47,6 +48,7 @@ Element CreateEmptyPile() {
     return vbox({
       text("╔════╗"),
       text("║    ║"),
+      text("║    ║"),
       text("╚════╝")
         }) | color(Color::GrayLight) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
 }
@@ -76,6 +78,8 @@ int main() {
     auto screen = ScreenInteractive::TerminalOutput();
 
     Deck deck;
+    deck.shuffleDeck();
+
     std::vector<TablePile> table;
     for (int i = 0; i < 7; i++) {
         TablePile tmp = TablePile(deck, i+1);
@@ -88,70 +92,56 @@ int main() {
     foundations.push_back(FoundationPile(Solitaire::Suit::T));
     foundations.push_back(FoundationPile(Solitaire::Suit::P));
 
-    std::vector<Card> stock;
-    std::vector<Card> waste;
-
-    
-    /*table[0] = { Card{Suit::P, Rank::As, true} };
-    table[1] = { Card{Suit::H, Rank::Dva, false},
-                        Card{Suit::K, Rank::Pet, true} };
-    table[2] = { Card{Suit::T, Rank::Tri, true},
-                        Card{Suit::P, Rank::Cetiri, true},
-                        Card{Suit::H, Rank::Dama, true} };
-    table[3] = { Card{Suit::K, Rank::Pet, true} };
-    table[4] = { Card{Suit::T, Rank::Deset, true} };
-    table[5] = { Card{Suit::P, Rank::Decko, true},
-                        Card{Suit::H, Rank::Sedam, true} };
-    table[6] = { Card{Suit::K, Rank::Devet, true} };*/
-
-    waste = { Card{Suit::T, Rank::Osam, true} };
+    WastePile waste;
 
     auto renderer = Renderer([&] {
-        auto stock_display = stock.empty() ? CreateEmptyPile() : CreateCardElement(stock.back());
+        auto stock_display = (deck.getDeckVct()).empty() 
+            ? CreateEmptyPile() : CreateCardElement((deck.getDeckVct()).back());
 
-        auto waste_display = waste.empty() ? CreateEmptyPile() : CreateCardElement(waste.back());
+        auto waste_display = (waste.getWasteVct()).empty() 
+            ? CreateEmptyPile() : CreateCardElement((waste.getWasteVct()).back());
 
-        std::vector<Element> foundation_elements(4);
-        for (int i = 0; i < 4; i++) {
-            foundation_elements.push_back(CreateFoundationPile(
-                foundations[i].getVct().end(), Solitaire::Suit::H));
-        }
-        
+        std::vector<Element> foundation_elements = {
+        foundations[0].getVct().empty() ? CreateEmptyPile() :
+            CreateFoundationPile(foundations[0].getVct().back(), Solitaire::Suit::H),
+        foundations[1].getVct().empty() ? CreateEmptyPile() :
+            CreateFoundationPile(foundations[1].getVct().back(), Solitaire::Suit::K),
+        foundations[2].getVct().empty() ? CreateEmptyPile() :
+            CreateFoundationPile(foundations[2].getVct().back(), Solitaire::Suit::T),
+        foundations[3].getVct().empty() ? CreateEmptyPile() :
+            CreateFoundationPile(foundations[3].getVct().back(), Solitaire::Suit::P),
+        };
 
         auto top_section = hbox({
             vbox({
-              text("Stock"),
-              stock_display
+                text("Stock"),
+                stock_display
             }),
-
             filler(),
+            vbox({
+                text("Waste"),
+                waste_display
+            }),
+            filler(),
+            vbox({
+                text("Foundations"),
+                hbox(foundation_elements)
+            })
+        });
 
-                vbox({
-                  text("Waste"),
-                  waste_display
-                }),
-
-                filler(),
-
-                vbox({
-                  text("Foundations"),
-                  hbox(std::move(foundation_elements))
-                })
-            });
-
-        std::vector<Element> tableau_elements;
+        std::vector<Element> table_elements;
         for (int i = 0; i < 7; ++i) {
             Element pile_element;
 
-            if (table[i].empty()) {
+            if ((table[i].getPileVct()).empty()) {
                 pile_element = CreateEmptyPile();
             }
             else {
                 std::vector<Element> cards_in_pile;
-                for (const auto& card : table[i]) {
+                for (const auto& card : table[i].getPileVct()) {
                     cards_in_pile.push_back(CreateCardElement(card));
                 }
-                pile_element = vbox(std::move(cards_in_pile));
+                pile_element = vbox(cards_in_pile);
             }
 
             auto labeled_pile = vbox({
@@ -159,26 +149,26 @@ int main() {
               pile_element
                 });
 
-            tableau_elements.push_back(labeled_pile);
+            table_elements.push_back(labeled_pile);
 
             if (i < 6) {
-                tableau_elements.push_back(filler());
+                table_elements.push_back(filler());
             }
         }
 
-        auto tableau_section = vbox({
-          text("Table") | center,
-          hbox(std::move(tableau_elements))
-            });
+        auto table_section = vbox({
+            text("Table") | center,
+            hbox(table_elements)
+        });
 
         return vbox({
-          top_section,
-          separator(),
-          tableau_section,
-          separator(),
-          text("Solitaire - Use arrow keys, ESC to exit") | center | color(Color::GrayLight)
-            }) | border | flex;
-        });
+            top_section,
+            separator(),
+            table_section,
+            separator(),
+            text("Solitaire - Pritisni ESC za izlaz") | center | color(Color::GrayLight)
+        }) | border | flex;
+    });
 
     auto component = CatchEvent(renderer, [&](Event event) {
         if (event == Event::Escape) {
