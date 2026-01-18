@@ -53,6 +53,15 @@ Element CreateEmptyPile() {
         }) | color(Color::GrayLight) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
 }
 
+Element CreateEmptyFoundation(Solitaire::Suit suit) {
+    return vbox({
+      text("┌────┐"),
+      text("║    ║"),
+      text("║    ║"),
+      text("╚════╝")
+        }) | color(Color::GrayLight) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
+}
+
 Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit) {
     std::string foundation_symbol;
     switch (suit) {
@@ -75,7 +84,7 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit) {
 }
 
 int main() {
-    auto screen = ScreenInteractive::TerminalOutput();
+    auto screen = ScreenInteractive::Fullscreen();
 
     Deck deck;
     deck.shuffleDeck();
@@ -160,6 +169,15 @@ int main() {
             text("Table") | center,
             hbox(table_elements)
         });
+
+        if (screen.dimx() < 100 || screen.dimy() < 48) {
+            return vbox({
+                filler(),
+                text("Prozor je premalen!") | bold | center,
+                text("Minimalna velicina: 100x30") | center,
+                filler(),
+            }) | border;
+        }
 
         return vbox({
             top_section,
