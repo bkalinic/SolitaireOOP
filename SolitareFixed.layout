@@ -2,75 +2,74 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src/cpp/WastePile.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="100" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/cpp/FoundationPile.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="154" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/cpp/PileVirt.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="84" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="48" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/header/Types.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="185" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="src/header/PileVirt.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="92" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/cpp/TablePile.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="src/cpp/TablePile.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="113" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/header/WastePile.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+	<File name="src/cpp/FoundationPile.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="237" topLine="0" />
+			<Cursor1 position="154" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/header/Deck.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+	<File name="src/cpp/Deck.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="130" topLine="3" />
+			<Cursor1 position="289" topLine="4" />
 		</Cursor>
 	</File>
-	<File name="src/header/FoundationPile.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="src/cpp/PileVirt.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="66" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/cpp/WastePile.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="100" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/header/FoundationPile.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="253" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/cpp/Card.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+	<File name="src/header/Types.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="412" topLine="0" />
+			<Cursor1 position="185" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/cpp/Deck.cpp" open="1" top="1" tabpos="14" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="95" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="src/header/TablePile.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="146" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/header/Card.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="src/header/Card.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="371" topLine="0" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="c1e7cce0696a8120009cd04900000002=0;SolitareFixed:main.cpp,1;SolitareFixed:src/header/Card.h,2;SolitareFixed:src/cpp/Card.cpp,3;SolitareFixed:src/header/Types.h,4;SolitareFixed:src/header/Deck.h,5;SolitareFixed:src/header/PileVirt.h,6;SolitareFixed:src/header/TablePile.h,7;SolitareFixed:src/cpp/TablePile.cpp,8;SolitareFixed:src/cpp/PileVirt.cpp,9;SolitareFixed:src/header/FoundationPile.h,10;SolitareFixed:src/cpp/FoundationPile.cpp,11;SolitareFixed:src/header/WastePile.h,12;SolitareFixed:src/cpp/WastePile.cpp,*13;SolitareFixed:src/cpp/Deck.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=855;besth=329;minw=855;minh=329;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=c1e7cce0696a8120009cd04900000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=0;besth=0;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=10|" />
+	<File name="src/header/TablePile.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="146" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/header/PileVirt.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="92" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/cpp/Card.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="412" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/header/WastePile.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="237" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="SolitaireFixed.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6459" topLine="163" />
+		</Cursor>
+	</File>
+	<File name="src/header/Deck.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="130" topLine="0" />
+		</Cursor>
+	</File>
 </CodeBlocks_layout_file>
