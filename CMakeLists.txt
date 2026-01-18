@@ -31,6 +31,7 @@ set(OOP_SOURCE
     src/cpp/FoundationPile.cpp
     src/cpp/GameEngine.cpp
     src/cpp/PileVirt.cpp
+    src/cpp/Selection.cpp
     src/cpp/TablePile.cpp
     src/cpp/WastePile.cpp
 )
@@ -40,6 +41,7 @@ set(OOP_HEADERS
     src/header/FoundationPile.h
     src/header/GameEngine.h
     src/header/PileVirt.h
+    src/header/Selection.h
     src/header/TablePile.h
     src/header/WastePile.h
 )

@@ -188,13 +188,13 @@ int main() {
         }) | border | flex;
     });
 
-    auto component = CatchEvent(renderer, [&](Event event) {
+    auto component = CatchEvent(renderer, [&](Event event) {    
         if (event == Event::Escape) {
             screen.Exit();
             return true;
         }
         return false;
-        });
+    });
 
     screen.Loop(component);
 
