@@ -19,16 +19,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="SolitaireFixed.cpp" />
+		<Unit filename="SolitaireFixed.h" />
 		<Unit filename="src/cpp/Card.cpp" />
 		<Unit filename="src/cpp/Deck.cpp" />
 		<Unit filename="src/cpp/FoundationPile.cpp" />
+		<Unit filename="src/cpp/GameEngine.cpp" />
 		<Unit filename="src/cpp/PileVirt.cpp" />
 		<Unit filename="src/cpp/TablePile.cpp" />
 		<Unit filename="src/cpp/WastePile.cpp" />
 		<Unit filename="src/header/Card.h" />
 		<Unit filename="src/header/Deck.h" />
 		<Unit filename="src/header/FoundationPile.h" />
+		<Unit filename="src/header/GameEngine.h" />
 		<Unit filename="src/header/PileVirt.h" />
 		<Unit filename="src/header/TablePile.h" />
 		<Unit filename="src/header/Types.h" />
