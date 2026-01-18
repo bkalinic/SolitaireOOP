@@ -56,7 +56,7 @@ void Selection::moveLeft() {
 void Selection::moveUp() {
     if (getArea() == Solitaire::PileType::T && getCardIndex() > 0) {
         setCardIndex(getCardIndex() - 1);
-    } 
+    }
     else if (getCardIndex() == 0){
         switch (getPileIndex()) {
         case(0):
@@ -110,11 +110,14 @@ void Selection::moveDown() {
             setCardIndex(0);
         }
     case(Solitaire::PileType::T):
-        if (getCardIndex() >= TablePile::getPileSize()){
-            setCardIndex(TablePile::getPileSize());
-        }
-        else{
             setCardIndex(getCardIndex()+1);
-        }
     }
+}
+
+bool Selection::isSelected(Solitaire::PileType t, int pile = 0, int card = 0) const {
+    return getArea() == t && getPileIndex() == pile && getCardIndex() == card;
+}
+
+bool Selection::isSource(Solitaire::PileType t, int pile = 0, int card = 0) const {
+    return sourceSnap && sourceSnap->type == t && sourceSnap->pileI == pile && sourceSnap->cardI;
 }

@@ -12,6 +12,7 @@
 #include "src/header/TablePile.h"
 #include "src/header/Types.h"
 #include "src/header/WastePile.h"
+#include "src/header/Selection.h"
 #include <vector>
 #include <string>
 
@@ -70,7 +71,7 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit) {
     case Solitaire::Suit::T: foundation_symbol = "T"; break;
     case Solitaire::Suit::P: foundation_symbol = "P"; break;
     }
-    
+
     if (stringRank((*top_card).getRank()) == "") {
         return vbox({
           text("┌────┐"),
@@ -94,7 +95,7 @@ int main() {
         TablePile tmp = TablePile(deck, i+1);
         table.push_back(tmp);
     }
-    
+
     std::vector<FoundationPile> foundations;
     foundations.push_back(FoundationPile(Solitaire::Suit::H));
     foundations.push_back(FoundationPile(Solitaire::Suit::K));
@@ -104,10 +105,10 @@ int main() {
     WastePile waste;
 
     auto renderer = Renderer([&] {
-        auto stock_display = (deck.getDeckVct()).empty() 
+        auto stock_display = (deck.getDeckVct()).empty()
             ? CreateEmptyPile() : CreateCardElement((deck.getDeckVct()).back());
 
-        auto waste_display = (waste.getWasteVct()).empty() 
+        auto waste_display = (waste.getWasteVct()).empty()
             ? CreateEmptyPile() : CreateCardElement((waste.getWasteVct()).back());
 
         std::vector<Element> foundation_elements = {
@@ -188,7 +189,13 @@ int main() {
         }) | border | flex;
     });
 
-    auto component = CatchEvent(renderer, [&](Event event) {    
+    Selection selector;
+
+    auto component = CatchEvent(renderer, [&](Event event) {
+        if (event == Event::ArrowLeft) {Selection::moveLeft(); return true;}
+        if (event == Event::ArrowRight) {Selection::moveRight(); return true;}
+        if (event == Event::ArrowUp) {Selection::moveUp(); return true;}
+        if (event == Event::ArrowDown) {Selection::moveDown(); return true;}
         if (event == Event::Escape) {
             screen.Exit();
             return true;
