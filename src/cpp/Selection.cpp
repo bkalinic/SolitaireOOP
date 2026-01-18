@@ -1,147 +1,120 @@
 #include "../header/Selection.h"
+#include "../header/Types.h"
 
 Selection::Selection() = default;
 
-Selection::~Selection();
-
-void Selection::setPos(Solitaire::PileType pT, int pI = 0, int cI = 0){
-    area = pT;
-    pileIndex = pI;
-    cardIndex = cI;
-}
+Selection::~Selection() {}
 
 void Selection::moveRight(){
     switch(getArea()){
-    case Solitaire::PileType::D{
+    case Solitaire::PileType::D:
         setArea(Solitaire::PileType::W);
         break;
-    }
-    case Solitaire::PileType::W{
+    case Solitaire::PileType::W:
         setArea(Solitaire::PileType::F);
         setPileIndex(0);
         break;
-    }
-    case Solitaire::PileType::F{
-        if(getPileIndex()>3){
+    case Solitaire::PileType::F:
+        if (getPileIndex() > 3) {
             setArea(Solitaire::PileType::T);
             setPileIndex(0);
             setCardIndex(0);
         }
         break;
-    }
-    case Solitaire::PileType::T{
-        if(getPileIndex()<6){
-            setPileIndex(getPileIndex()+1);
+    case Solitaire::PileType::T:
+        if (getPileIndex() < 6) {
+            setPileIndex(getPileIndex() + 1);
             break;
         }
     }
-    }
 }
 
-void Selection::moveLeft(){
+void Selection::moveLeft() {
     switch(getArea()){
-    case Solitaire::PileType::T{
-        if(getPileIndex()==0){
+    case Solitaire::PileType::T:
+        if (getPileIndex() == 0) {
             setArea(Solitaire::PileType::F);
             setPileIndex(3);
         }else{
-            setArea(getArea()-1);
+            setArea(getArea() - 1);
         }
         break;
-    }
-    case Solitaire::PileType::F{
-        if(getPileIndex()==0){
+    case Solitaire::PileType::F:
+        if (getPileIndex() == 0) {
             setArea(Solitaire::PileType::W);
         }else{
-            setPileIndex(getPileIndex()-1);
+            setPileIndex(getPileIndex() - 1);
         }
         break;
-    }
-    case Solitaire::PileType::W{
+    case Solitaire::PileType::W:
         setArea(Solitaire::PileType::D);
         break;
-    }
-    default{
-        break;
-    }
+    default: break;
     }
 }
 
-void Selection::moveUp(){
-    if(getArea()==Solitaire::PileType::T && getCardIndex() > 0){
-        setCardIndex(getCardIndex()-1);
-    }else if(getCardIndex() == 0){
-        switch(getPileIndex()){
-        case(0){
+void Selection::moveUp() {
+    if (getArea() == Solitaire::PileType::T && getCardIndex() > 0) {
+        setCardIndex(getCardIndex() - 1);
+    } 
+    else if (getCardIndex() == 0){
+        switch (getPileIndex()) {
+        case(0):
             setArea(Solitaire::PileType::D);
-        }
-        case(1){
+        case(1):
             setArea(Solitaire::PileType::D);
-        }
-        case(2){
+        case(2):
             setArea(Solitaire::PileType::D);
-        }
-        case(3){
+        case(3):
             setArea(Solitaire::PileType::W);
-        }
-        case(4){
+        case(4):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
-        }
-        case(5){
+        case(5):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
-        }
-        case(6){
+        case(6):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
-        }
         }
     }
 }
 
-void Selection::moveDown(){
+void Selection::moveDown() {
     switch(getArea()){
-    case(Solitaire::PileType::D){
+    case(Solitaire::PileType::D):
         setArea(Solitaire::PileType::T);
         setPileIndex(0);
         setCardIndex(0);
-    }
-    case(Solitaire::PileType::W){
+    case(Solitaire::PileType::W):
         setArea(Solitaire::PileType::T);
         setPileIndex(3);
         setCardIndex(0);
-    }
-    case(Solitaire::PileType::F){
+    case(Solitaire::PileType::F):
         switch(getPileIndex()){
-        case(0){
+        case(0):
             setArea(Solitaire::PileType::T);
             setPileIndex(4);
             setCardIndex(0);
-        }
-        case(1){
+        case(1):
             setArea(Solitaire::PileType::T);
             setPileIndex(5);
             setCardIndex(0);
-        }
-        case(2){
+        case(2):
+            setArea(Solitaire::PileType::T);
+            setPileIndex(6);
+            setCardIndex(0);
+        case(3):
             setArea(Solitaire::PileType::T);
             setPileIndex(6);
             setCardIndex(0);
         }
-        case(3){
-            setArea(Solitaire::PileType::T);
-            setPileIndex(6);
-            setCardIndex(0);
-        }
-        }
-    }
-    case(Solitaire::PileType::T){
-        if(getCardIndex() => TablePile::getPileSize()){
+    case(Solitaire::PileType::T):
+        if (getCardIndex() >= TablePile::getPileSize()){
             setCardIndex(TablePile::getPileSize());
-        }else{
+        }
+        else{
             setCardIndex(getCardIndex()+1);
         }
-    }
     }
 }
