@@ -22,7 +22,7 @@ using namespace Solitaire;
 
 Selection selector;
 
-Element CreateCardElement(const cardPtr card, Solitaire::PileType type, int pileIter, int cardInPile) {
+Element CreateCardElement(const cardPtr card, Solitaire::PileType type, int pileIter=0, int cardInPile=0) {
     bool selected = selector.isSelected(type, pileIter, cardInPile);
     bool source = selector.isSource(type,pileIter,cardInPile);
     auto cardFdown = vbox({

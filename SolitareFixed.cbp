@@ -26,6 +26,7 @@
 		<Unit filename="src/cpp/FoundationPile.cpp" />
 		<Unit filename="src/cpp/GameEngine.cpp" />
 		<Unit filename="src/cpp/PileVirt.cpp" />
+		<Unit filename="src/cpp/Selection.cpp" />
 		<Unit filename="src/cpp/TablePile.cpp" />
 		<Unit filename="src/cpp/WastePile.cpp" />
 		<Unit filename="src/header/Card.h" />
@@ -33,6 +34,7 @@
 		<Unit filename="src/header/FoundationPile.h" />
 		<Unit filename="src/header/GameEngine.h" />
 		<Unit filename="src/header/PileVirt.h" />
+		<Unit filename="src/header/Selection.h" />
 		<Unit filename="src/header/TablePile.h" />
 		<Unit filename="src/header/Types.h" />
 		<Unit filename="src/header/WastePile.h" />

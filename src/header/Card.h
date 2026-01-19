@@ -5,6 +5,7 @@
 #include "Types.h"
 #include <iostream>
 #include <stdexcept>
+#include <memory>
 
 class Card {
 private:
