@@ -121,3 +121,32 @@ bool Selection::isSelected(Solitaire::PileType t, int pile = 0, int card = 0) co
 bool Selection::isSource(Solitaire::PileType t, int pile = 0, int card = 0) const {
     return sourceSnap && sourceSnap->type == t && sourceSnap->pileI == pile && sourceSnap->cardI;
 }
+
+void Selection::restoreSource(){
+    if(!cardFrom) return;
+    setArea(cardFrom->type);
+    setPileIndex(cardFrom->pileI);
+    setCardIndex(cardFrom->cardI);
+}
+
+bool Selection::pickCard(){
+    if(holding) return false;
+    cardFrom = Snapshot{getArea(),getPileIndex(),getCardIndex()};
+    holding = true;
+    return true;
+}
+
+bool Selection::placeCard(){
+    if(!holding) return false;
+    holding = false;
+    cardFrom.reset();
+    return true;
+}
+
+bool Selection::cancel(){
+    if(!holding) return false;
+    restoreSource();
+    holding=false;
+    cardFrom.reset();
+    return true;
+}

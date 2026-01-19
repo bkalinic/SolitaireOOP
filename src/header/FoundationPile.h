@@ -10,6 +10,7 @@ private:
     Solitaire::PileType tType = Solitaire::PileType::F;
     Solitaire::Suit fPileSuit;
     std::vector<cardPtr> fPileVct;
+    bool locked;
 public:
     FoundationPile(Solitaire::Suit fPileSuit);
     ~FoundationPile();

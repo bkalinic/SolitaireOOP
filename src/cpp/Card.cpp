@@ -28,6 +28,14 @@ void Card::setFaceUp() {
     }
 }
 
+bool Card::isRed(){
+    if(getSuit()==Solitaire::Suit::H || getSuit()==Solitaire::Suit::K){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 std::string Card::getSymbol() const {
     if (getSuit() == Solitaire::Suit::H) return "♥";
     if (getSuit() == Solitaire::Suit::K) return "♦";
@@ -38,7 +46,7 @@ std::string Card::getSymbol() const {
 
 ftxui::Color Card::getColor() const {
     return (getSuit() == Solitaire::Suit::H || getSuit() == Solitaire::Suit::K)
-        ? ftxui::Color::Red 
+        ? ftxui::Color::Red
         : ftxui::Color::Black;
 }
 

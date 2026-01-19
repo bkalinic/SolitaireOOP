@@ -4,7 +4,7 @@
 
 namespace Solitaire {
     enum class Suit { H, K, P, T };
-    enum class Rank { As, Dva, Tri, Cetiri, Pet, Sest, Sedam, Osam, Devet, Deset, Decko, Dama, Kralj };
+    enum class Rank { As = 1, Dva, Tri, Cetiri, Pet, Sest, Sedam, Osam, Devet, Deset, Decko, Dama, Kralj };
     enum class PileType { T, F, W, D };
     inline std::string stringSuit(Suit s) {
         switch(s){

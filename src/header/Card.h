@@ -19,6 +19,7 @@ public:
     bool isFaceUp() const;
     void flipCard();
     void setFaceUp();
+    bool isRed() const;
 
     std::string getSymbol() const;
     ftxui::Color getColor() const;

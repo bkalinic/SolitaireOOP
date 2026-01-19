@@ -7,6 +7,7 @@
 #include <ftxui/component/screen_interactive.hpp>
 #include "Types.h"
 #include "TablePile.h"
+#include <optional>
 
 using namespace ftxui;
 using namespace Solitaire;
@@ -22,6 +23,7 @@ private:
         int pileI;
         int cardI;
 	};
+	std::optional<sourceSnap> cardFrom;
 public:
     Selection();
     ~Selection();
@@ -32,13 +34,16 @@ public:
     void setCardIndex(int cI) { cardIndex = cI; }
     Solitaire::PileType getArea() const { return area; }
     void setArea(Solitaire::PileType pT) { area = pT; }
+    bool getHold() const {return holding;}
 
+    void restoreSource();
     void moveRight();
     void moveLeft();
     void moveUp();
     void moveDown();
-    void pickCard();
-    void placeCard();
+    bool pickCard();
+    bool placeCard();
+    bool cancel();
 
     bool isSelected(Solitaire::PileType t, int pile = 0, int card = 0) const {}
     bool isSource(Solitaire::PileType t, int pile = 0, int card = 0) const {}

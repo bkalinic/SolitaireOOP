@@ -19,7 +19,10 @@
 using namespace ftxui;
 using namespace Solitaire;
 
-Element CreateCardElement(const cardPtr card) {
+Selection selector;
+
+Element CreateCardElement(const cardPtr card, Solitaire::PileType type) {
+
     if (!(*card).isFaceUp()) {
         return vbox({
           text("┌────┐"),
@@ -36,34 +39,33 @@ Element CreateCardElement(const cardPtr card) {
     else {
         value = value + " ";
     }
-
-    return vbox({
+    auto tableCardFup = vbox({
       text("┌────┐"),
       hbox({text("│"), text(value + (*card).getSymbol()) | color((*card).getColor()), text(" │")}),
       text("│    │"),
       text("└────┘")
         }) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
+
+    if(selected){
+        tableCardFup = tableCardFup | border | bgcolor(Color::Yellow);
+    }
+
+    return tableCardFup;
+
 }
 
 Element CreateEmptyPile() {
-    return vbox({
+    auto emptyPileCard = vbox({
       text("╔════╗"),
       text("║    ║"),
       text("║    ║"),
       text("╚════╝")
         }) | color(Color::GrayLight) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
+
+    return  emptyPileCard;
 }
 
-Element CreateEmptyFoundation(Solitaire::Suit suit) {
-    return vbox({
-      text("┌────┐"),
-      text("║    ║"),
-      text("║    ║"),
-      text("╚════╝")
-        }) | color(Color::GrayLight) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
-}
-
-Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit) {
+Element CreateFoundationPile(const cardPtr top_card,int index) {
     std::string foundation_symbol;
     switch (suit) {
     case Solitaire::Suit::H: foundation_symbol = "H"; break;
@@ -80,6 +82,7 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit) {
           text("└────┘")
             }) | border | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
     }
+
 
     return CreateCardElement(top_card) | border;
 }
@@ -105,11 +108,12 @@ int main() {
     WastePile waste;
 
     auto renderer = Renderer([&] {
+        bool source   = selector.isSource(Solitaire::PileType::D, pile, card);
         auto stock_display = (deck.getDeckVct()).empty()
-            ? CreateEmptyPile() : CreateCardElement((deck.getDeckVct()).back());
+            ? CreateEmptyPile() : CreateCardElement((deck.getDeckVct()).back(),Solitaire::PileType::D);
 
         auto waste_display = (waste.getWasteVct()).empty()
-            ? CreateEmptyPile() : CreateCardElement((waste.getWasteVct()).back());
+            ? CreateEmptyPile() : CreateCardElement((waste.getWasteVct()).back(),Solitaire::PileType::W);
 
         std::vector<Element> foundation_elements = {
         foundations[0].getVct().empty() ? CreateEmptyPile() :
@@ -189,16 +193,21 @@ int main() {
         }) | border | flex;
     });
 
-    Selection selector;
 
     auto component = CatchEvent(renderer, [&](Event event) {
         if (event == Event::ArrowLeft) {Selection::moveLeft(); return true;}
         if (event == Event::ArrowRight) {Selection::moveRight(); return true;}
         if (event == Event::ArrowUp) {Selection::moveUp(); return true;}
         if (event == Event::ArrowDown) {Selection::moveDown(); return true;}
+        if (event == Event::Return) {GameEngine::handleEnter(); return true;}
         if (event == Event::Escape) {
-            screen.Exit();
-            return true;
+            if(Selection::getHold()){
+                GameEngine::cancel();
+                return true;
+            }else{
+                screen.Exit();
+                return true;
+            }
         }
         return false;
     });
