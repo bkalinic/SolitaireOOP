@@ -9,8 +9,8 @@
 
 using namespace ftxui;
 
-Element CreateCardElement(const Card& card, Solitaire::PileType type, int pileIter=0, int cardInPile=0);
-Element CreateEmptyPile(Solitaire::PileType type, int pileIter=0, int cardInPile=0);
-Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit, Solitaire::PileType type, int pileIter=0);
+Element CreateCardElement(const Card& card, Solitaire::PileType type, int pileIter = 0, int cardInPile = 0);
+Element CreateEmptyPile(Solitaire::PileType type, int pileIter = 0, int cardInPile = 0);
+Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit, Solitaire::PileType type, int pileIter = 0);
 
 #endif

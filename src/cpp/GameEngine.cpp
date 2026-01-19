@@ -6,7 +6,7 @@ GameEngine::GameEngine(Deck& d, WastePile& ws, std::vector<TablePile>& tp, std::
 
 void GameEngine::gameStart(int pileInd) {
     auto pile = getTable(pileInd).getPileVct();
-    if (pile.empty()) {
+    if (!pile.empty()) {
         pile.back()->flipCard();
     }
 }
@@ -131,6 +131,7 @@ bool GameEngine::handleEnter(Selection& s){
             return false;
         }else{
             cardPtr cd = deck.drawCard();
+            cd->flipCard();
             waste.addToPile(cd);
         }
         return true;

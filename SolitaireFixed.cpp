@@ -106,6 +106,9 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit, Solit
         if(selected){
             fndSlot = fndSlot | bgcolor(Color::Yellow);
         }
+        if(source){
+            fndSlot = fndSlot | bgcolor(Color::Green);
+        }
         return fndSlot;
     }
 
