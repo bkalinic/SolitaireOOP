@@ -28,7 +28,7 @@ void Card::setFaceUp() {
     }
 }
 
-bool Card::isRed(){
+bool Card::isRed() const {
     if(getSuit()==Solitaire::Suit::H || getSuit()==Solitaire::Suit::K){
         return true;
     }else{

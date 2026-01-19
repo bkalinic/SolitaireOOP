@@ -18,15 +18,16 @@ private:
 	int pileIndex = 0;
 	int cardIndex = 0;
 	bool holding = false;
-	struct sourceSnap{
-        Solitaire::PileType type;
-        int pileI;
-        int cardI;
-	};
-	std::optional<sourceSnap> cardFrom;
 public:
     Selection();
     ~Selection();
+
+    struct sourceSnap {
+        Solitaire::PileType type = Solitaire::PileType::T;
+        int pileI = 0;
+        int cardI = 0;
+    };
+    std::optional<sourceSnap> cardFrom;
 
     int getPileIndex() const { return pileIndex; }
     void setPileIndex(int pI) { pileIndex = pI; }
@@ -45,8 +46,8 @@ public:
     bool placeCard();
     bool cancel();
 
-    bool isSelected(Solitaire::PileType t, int pile = 0, int card = 0) const {}
-    bool isSource(Solitaire::PileType t, int pile = 0, int card = 0) const {}
+    bool isSelected(Solitaire::PileType t, int pile = 0, int card = 0) const;
+    bool isSource(Solitaire::PileType t, int pile = 0, int card = 0) const;
 };
 
 #endif

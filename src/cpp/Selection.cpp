@@ -36,7 +36,7 @@ void Selection::moveLeft() {
             setArea(Solitaire::PileType::F);
             setPileIndex(3);
         }else{
-            setArea(getArea() - 1);
+            setPileIndex(getPileIndex() - 1);
         }
         break;
     case Solitaire::PileType::F:
@@ -61,21 +61,28 @@ void Selection::moveUp() {
         switch (getPileIndex()) {
         case(0):
             setArea(Solitaire::PileType::D);
+            break;
         case(1):
             setArea(Solitaire::PileType::D);
+            break;
         case(2):
             setArea(Solitaire::PileType::D);
+            break;
         case(3):
             setArea(Solitaire::PileType::W);
+            break;
         case(4):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
+            break;
         case(5):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
+            break;
         case(6):
             setArea(Solitaire::PileType::F);
             setPileIndex(0);
+            break;
         }
     }
 }
@@ -86,40 +93,49 @@ void Selection::moveDown() {
         setArea(Solitaire::PileType::T);
         setPileIndex(0);
         setCardIndex(0);
+        break;
     case(Solitaire::PileType::W):
         setArea(Solitaire::PileType::T);
         setPileIndex(3);
         setCardIndex(0);
+        break;
     case(Solitaire::PileType::F):
         switch(getPileIndex()){
         case(0):
             setArea(Solitaire::PileType::T);
             setPileIndex(4);
             setCardIndex(0);
+            break;
         case(1):
             setArea(Solitaire::PileType::T);
             setPileIndex(5);
             setCardIndex(0);
+            break;
         case(2):
             setArea(Solitaire::PileType::T);
             setPileIndex(6);
             setCardIndex(0);
+            break;
         case(3):
             setArea(Solitaire::PileType::T);
             setPileIndex(6);
             setCardIndex(0);
+            break;
         }
+        break;
     case(Solitaire::PileType::T):
-            setCardIndex(getCardIndex()+1);
+        setCardIndex(getCardIndex()+1);
+        break;
     }
 }
 
-bool Selection::isSelected(Solitaire::PileType t, int pile = 0, int card = 0) const {
+bool Selection::isSelected(Solitaire::PileType t, int pile, int card) const {
     return getArea() == t && getPileIndex() == pile && getCardIndex() == card;
 }
 
-bool Selection::isSource(Solitaire::PileType t, int pile = 0, int card = 0) const {
-    return sourceSnap && sourceSnap->type == t && sourceSnap->pileI == pile && sourceSnap->cardI;
+Selection::sourceSnap srcSnap;
+bool Selection::isSource(Solitaire::PileType t, int pile, int card) const {
+    return srcSnap.type == t && srcSnap.pileI == pile && srcSnap.cardI;
 }
 
 void Selection::restoreSource(){
@@ -131,7 +147,7 @@ void Selection::restoreSource(){
 
 bool Selection::pickCard(){
     if(holding) return false;
-    cardFrom = Snapshot{getArea(),getPileIndex(),getCardIndex()};
+    cardFrom = sourceSnap{getArea(),getPileIndex(),getCardIndex()};
     holding = true;
     return true;
 }

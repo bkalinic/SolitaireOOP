@@ -9,6 +9,7 @@
 #include "src/header/Card.h"
 #include "src/header/Deck.h"
 #include "src/header/FoundationPile.h"
+#include "src/header/GameEngine.h"
 #include "src/header/TablePile.h"
 #include "src/header/Types.h"
 #include "src/header/WastePile.h"
@@ -19,10 +20,9 @@
 using namespace ftxui;
 using namespace Solitaire;
 
-GameEngine gameengine;
 Selection selector;
 
-Element CreateCardElement(const cardPtr card, Solitaire::PileType type,int pileIter=0, int cardInPile=0) {
+Element CreateCardElement(const cardPtr card, Solitaire::PileType type, int pileIter, int cardInPile) {
     bool selected = selector.isSelected(type, pileIter, cardInPile);
     bool source = selector.isSource(type,pileIter,cardInPile);
     auto cardFdown = vbox({
@@ -33,10 +33,10 @@ Element CreateCardElement(const cardPtr card, Solitaire::PileType type,int pileI
             }) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
     if (!(*card).isFaceUp()) {
         if(selected){
-        cardFdown = cardFdown | bgcolor(Color::Yellow);
+        cardFdown = cardFdown | color(Color::Yellow);
         }
         if(source){
-        cardFdown = cardFdown | bgcolor(Color::Green);
+        cardFdown = cardFdown | color(Color::Green);
         }
         return cardFdown;
     }
@@ -56,17 +56,17 @@ Element CreateCardElement(const cardPtr card, Solitaire::PileType type,int pileI
         }) | size(WIDTH, EQUAL, 8) | size(HEIGHT, EQUAL, 5);
 
     if(selected){
-        cardFup = cardFup | bgcolor(Color::Yellow);
+        cardFup = cardFup | color(Color::Yellow);
     }
     if(source){
-        cardFup = cardFup | bgcolor(Color::Green);
+        cardFup = cardFup | color(Color::Green);
     }
 
-    return tableCardFup;
+    return cardFup;
 
 }
 
-Element CreateEmptyPile(Solitaire::PileType type,int pileIter=0, int cardInPile=0) {
+Element CreateEmptyPile(Solitaire::PileType type,int pileIter, int cardInPile) {
     bool selected = selector.isSelected(type, pileIter, cardInPile);
     bool source = selector.isSource(type,pileIter,cardInPile);
     auto emptyPileCard = vbox({
@@ -84,7 +84,7 @@ Element CreateEmptyPile(Solitaire::PileType type,int pileIter=0, int cardInPile=
     return  emptyPileCard;
 }
 
-Element CreateFoundationPile(const cardPtr top_card, Solitaire::PileType type, int pileInd) {
+Element CreateFoundationPile(const cardPtr top_card, Solitaire::Suit suit, Solitaire::PileType type, int pileIter) {
     std::string foundation_symbol;
     switch (suit) {
     case Solitaire::Suit::H: foundation_symbol = "H"; break;
@@ -93,8 +93,8 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::PileType type, i
     case Solitaire::Suit::P: foundation_symbol = "P"; break;
     }
 
-    bool selected = selector.isSelected(type, pileIter, cardInPile);
-    bool source = selector.isSource(type,pileIter,cardInPile);
+    bool selected = selector.isSelected(type, pileIter);
+    bool source = selector.isSource(type, pileIter);
 
     if (stringRank((*top_card).getRank()) == "") {
         auto fndSlot = vbox({
@@ -110,7 +110,7 @@ Element CreateFoundationPile(const cardPtr top_card, Solitaire::PileType type, i
     }
 
 
-    return CreateCardElement(top_card) | border;
+    return CreateCardElement(top_card, type) | border;
 }
 
 int main() {
@@ -141,13 +141,13 @@ int main() {
             ? CreateEmptyPile(Solitaire::PileType::W) : CreateCardElement((waste.getWasteVct()).back(),Solitaire::PileType::W);
 
         std::vector<Element> foundation_elements = {
-        foundations[0].getVct().empty() ? CreateEmptyPile() :
+        foundations[0].getVct().empty() ? CreateEmptyPile(Solitaire::PileType::F) :
             CreateFoundationPile(foundations[0].getVct().back(), Solitaire::Suit::H, Solitaire::PileType::F, 0),
-        foundations[1].getVct().empty() ? CreateEmptyPile() :
+        foundations[1].getVct().empty() ? CreateEmptyPile(Solitaire::PileType::F) :
             CreateFoundationPile(foundations[1].getVct().back(), Solitaire::Suit::K,  Solitaire::PileType::F, 1),
-        foundations[2].getVct().empty() ? CreateEmptyPile() :
+        foundations[2].getVct().empty() ? CreateEmptyPile(Solitaire::PileType::F) :
             CreateFoundationPile(foundations[2].getVct().back(), Solitaire::Suit::T,  Solitaire::PileType::F, 2),
-        foundations[3].getVct().empty() ? CreateEmptyPile() :
+        foundations[3].getVct().empty() ? CreateEmptyPile(Solitaire::PileType::F) :
             CreateFoundationPile(foundations[3].getVct().back(), Solitaire::Suit::P,  Solitaire::PileType::F, 3),
         };
 
@@ -177,7 +177,7 @@ int main() {
             }
             else {
                 std::vector<Element> cards_in_pile;
-                int tablePLen=table[i].size();
+                int tablePLen=table[i].getPileSize();
                 for (const auto& card : table[i].getPileVct()) {
                     cards_in_pile.push_back(CreateCardElement(card,Solitaire::PileType::T,i,tablePLen));
                 }
@@ -219,16 +219,20 @@ int main() {
         }) | border | flex;
     });
 
+    GameEngine gameengine(deck, waste, table, foundations);
+    for (int i = 0; i < 7; i++) {
+        gameengine.gameStart(i);
+    }
 
     auto component = CatchEvent(renderer, [&](Event event) {
         if (event == Event::ArrowLeft) {selector.moveLeft(); return true;}
         if (event == Event::ArrowRight) {selector.moveRight(); return true;}
         if (event == Event::ArrowUp) {selector.moveUp(); return true;}
         if (event == Event::ArrowDown) {selector.moveDown(); return true;}
-        if (event == Event::Return) {gameengine.handleEnter(); return true;}
+        if (event == Event::Return) {gameengine.handleEnter(selector); return true;}
         if (event == Event::Escape) {
             if(selector.getHold()){
-                gameengine.cancel();
+                gameengine.cancel(selector);
                 return true;
             }else{
                 screen.Exit();

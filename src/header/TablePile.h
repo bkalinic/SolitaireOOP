@@ -18,6 +18,6 @@ public:
 
     void generatePile(Deck& deck, int n);
     Solitaire::PileType getPileT() override { return tType; }
-    inline size_t getPileSize() const {return tPileVct.size()};
+    inline size_t getPileSize() const { return tPileVct.size(); }
 };
 #endif // TABLEPILE_H

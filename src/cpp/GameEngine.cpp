@@ -1,7 +1,15 @@
 #include "../header/GameEngine.h"
+#include <vector>
 
 GameEngine::GameEngine(Deck& d, WastePile& ws, std::vector<TablePile>& tp, std::vector<FoundationPile>& fp)
     :deck(d),waste(ws),table(tp),foundations(fp){}
+
+void GameEngine::gameStart(int pileInd) {
+    auto pile = getTable(pileInd).getPileVct();
+    if (pile.empty()) {
+        pile.back()->flipCard();
+    }
+}
 
 bool GameEngine::canPick(const Selection& s, const cardPtr& card){
     if(!card->isFaceUp()){
@@ -15,7 +23,7 @@ bool GameEngine::canPick(const Selection& s, const cardPtr& card){
 
 bool GameEngine::canPlace(const Selection& s, const cardPtr& card){
     if(s.getArea() == Solitaire::PileType::T){
-        auto& pile = table[s.getPileIndex()].getPileVct();
+        auto pile = getTable(s.getPileIndex()).getPileVct();
         if(pile.empty()){
             if(card->getRank() == Solitaire::Rank::Kralj){
                 return true;
@@ -27,7 +35,7 @@ bool GameEngine::canPlace(const Selection& s, const cardPtr& card){
         return false;
     }
     if(s.getArea() == Solitaire::PileType::F){
-        auto& pile = table[s.getPileIndex()].getVct();
+        auto pile = getTable(s.getPileIndex()).getPileVct();
         if(pile.empty()){
             if(card->getRank() == Solitaire::Rank::As){
                 return true;
@@ -43,21 +51,21 @@ bool GameEngine::canPlace(const Selection& s, const cardPtr& card){
 
 cardPtr GameEngine::getSelCard(const Selection& s){
     if(s.getArea() == Solitaire::PileType::T){
-        auto& v = table[s.getPileIndex()].getPileVct();
+        auto v = getTable(s.getPileIndex()).getPileVct();
         if(s.getCardIndex() >= 0 && s.getCardIndex() < (int)v.size()){
             return v[s.getCardIndex()];
         }
     }
 
     if(s.getArea() == Solitaire::PileType::W){
-        auto& v = waste->getWasteVct();
+        auto v = getWaste().getWasteVct();
         if(!v.empty()){
             return v.back();
         }
     }
 
     if(s.getArea() == Solitaire::PileType::F){
-        auto& v = foundations[s.getPileIndex()].getVct();
+        auto v = getFoundations(s.getPileIndex()).getVct();
         if(!v.empty()){
             return v.back();
         }
@@ -70,7 +78,7 @@ bool GameEngine::pick(Selection& s){
     if(!card) return false;
     if(!canPick(s,card)) return false;
 
-    s.pick();
+    s.pickCard();
     return true;
 }
 
@@ -78,10 +86,9 @@ void GameEngine::cancel(Selection& s){
     s.cancel();
 }
 
-
 void GameEngine::moveCard(Solitaire::PileType fromType, int fromPile, int fromCard, Solitaire::PileType toType, int toPile){
-    (std::vector<cardptr>)* src = nullptr;
-    (std::vector<cardptr>)* dst = nullptr;
+    std::vector<cardPtr> src;
+    std::vector<cardPtr> dst;
 
     if(fromType == Solitaire::PileType::T){
         src = table[fromPile].getPileVct();
@@ -95,20 +102,20 @@ void GameEngine::moveCard(Solitaire::PileType fromType, int fromPile, int fromCa
         dst = foundations[toPile].getVct();
     }
 
-    auto it = src->begin() + fromCard;
-    dst -> insert(dst->end(), it, src->empty());
-    src -> erase(it, src->end());
+    auto it = src.begin() + fromCard;
+    dst.insert(dst.end(), it, src.end());
+    src.erase(it, src.end());
 
-    if(fromType == Solitaire::PileType::T && !src->empty()){
-        src->back()->setFaceUp(true);
+    if(fromType == Solitaire::PileType::T && !src.empty()){
+        src.back()->setFaceUp();
     }
 }
 
 bool GameEngine::place(Selection& s){
-    auto from = s.sourceSnap();
+    auto from = s.cardFrom;
     if(!from) return false;
 
-    cardPtr card = getSelCard(*from);
+    cardPtr card = getSelCard(s);
     if(!canPlace(s,card)) return false;
 
     moveCard(from->type, from->pileI, from->cardI, s.getArea(),s.getPileIndex());
@@ -126,12 +133,12 @@ bool GameEngine::handleEnter(Selection& s){
             cardPtr cd = deck.drawCard();
             waste.addToPile(cd);
         }
-    return true;
+        return true;
     }
-    if(!s.holding()){
+    if (!s.getHold()) {
         return pick(s);
+    }
     else{
-            return place(s);
-        }
+        return place(s);
     }
 }
